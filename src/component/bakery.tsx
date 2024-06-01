@@ -129,7 +129,7 @@ const BakeryAlgorithm: React.FC = () => {
                     ) : (
                         <div>
                             <p className='flex justify-center'>No finished processes</p>
-                            <Image src="./public/empty-box.svg" preview={false}></Image>
+                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" preview={false}></Image>
                         </div>
                     )}
                 </div>
@@ -149,7 +149,7 @@ const BakeryAlgorithm: React.FC = () => {
                     ) : (
                         <div>
                             <p className='flex justify-center'>No finished processes</p>
-                            <Image src="./public/empty-box.svg" preview={false}></Image>
+                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" preview={false}></Image>
                         </div>
                     )}
                 </div>
@@ -168,7 +168,7 @@ const BakeryAlgorithm: React.FC = () => {
                     ) : (
                         <div>
                             <p className='flex justify-center'>No finished processes</p>
-                            <Image src="./public/empty-box.svg" preview={false}></Image>
+                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" preview={false}></Image>
                         </div>
                     )}
                 </div>
