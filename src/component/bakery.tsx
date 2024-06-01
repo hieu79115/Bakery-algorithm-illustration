@@ -1,5 +1,5 @@
 import { ArrowDownOutlined, ArrowUpOutlined, LoadingOutlined, PlusOutlined, ReloadOutlined, StepForwardOutlined } from '@ant-design/icons';
-import { Button, Image } from 'antd';
+import { Button, Empty, message, Image } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { Process } from '../types/process';
 
@@ -61,6 +61,7 @@ const BakeryAlgorithm: React.FC = () => {
                     setFinishedProcesses([...finishedProcesses, finishedProcess]);
                     setServing([...serving]);
                 }
+                message.success(`Process ${finishedProcess?.id} finished serving`);
             }
             serveNextProcess();
         }, 5000);
@@ -69,7 +70,15 @@ const BakeryAlgorithm: React.FC = () => {
 
     return (
         <div className="text-white m-5 flex flex-col gap-4">
-            <h1 className="text-5xl font-bold m-2 flex justify-center mt-10 mb-10">Bakery Algorithm</h1>
+            <div className="flex flex-col md:flex-row justify-center">
+                <Image
+                    className='translate-x-[-20px] md:translate-x-[20px]'
+                    src="https://www.svgrepo.com/show/408281/bakery-christmas-cookie-cupcake-pastry-winter.svg"
+                    width={150}
+                    preview={false}
+                />
+                <h1 className="text-5xl font-bold flex mb-8 md:m-11">Bakery Algorithm</h1>
+            </div>
             <div className='flex flex-col lg:flex-row gap-4 justify-center mb-4'>
                 <Button
                     className="w-fit" ghost onClick={addProcess} size="large" icon={<PlusOutlined />}
@@ -111,8 +120,8 @@ const BakeryAlgorithm: React.FC = () => {
                             ))}
                         </ul>
                     ) : (
-                        <div className='flex flex-col items-center'>
-                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" width={150} preview={false}></Image>
+                        <div className='flex flex-col items-center gap-4'>
+                            <Empty description={false} />
                             <p>No waiting processes</p>
                         </div>
                     )}
@@ -131,8 +140,8 @@ const BakeryAlgorithm: React.FC = () => {
                             ))}
                         </ul>
                     ) : (
-                        <div className='flex flex-col items-center'>
-                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" width={200} preview={false}></Image>
+                        <div className='flex flex-col items-center gap-4'>
+                            <Empty description={false} />
                             <p>No serving processes</p>
                         </div>
                     )}
@@ -150,8 +159,8 @@ const BakeryAlgorithm: React.FC = () => {
                             ))}
                         </ul>
                     ) : (
-                        <div className='flex flex-col items-center'>
-                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" width={150} preview={false}></Image>
+                        <div className='flex flex-col items-center gap-4'>
+                            <Empty description={false} />
                             <p>No finished processes</p>
                         </div>
                     )}
