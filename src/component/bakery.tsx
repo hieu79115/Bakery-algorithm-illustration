@@ -1,7 +1,8 @@
 import { ArrowDownOutlined, ArrowUpOutlined, LoadingOutlined, PlusOutlined, ReloadOutlined, StepForwardOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Process } from '../types/process';
+import { Image } from "antd"
 
 const BakeryAlgorithm: React.FC = () => {
     const [processes, setProcesses] = useState<Process[]>([]);
@@ -69,8 +70,8 @@ const BakeryAlgorithm: React.FC = () => {
 
     return (
         <div className="text-white m-5 flex flex-col gap-4">
-            <h1 className="text-2xl font-bold">Bakery Algorithm</h1>
-            <div className='flex flex-row gap-4'>
+            <h1 className="text-5xl font-bold m-2 flex justify-center mt-10 mb-10">Bakery Algorithm</h1>
+            <div className='flex flex-row gap-4 justify-center'>
                 <Button
                     className="w-fit"
                     ghost
@@ -113,8 +114,8 @@ const BakeryAlgorithm: React.FC = () => {
                 </Button>
             </div>
             <div className='flex flex-row justify-around'>
-                <div>
-                    <h2 className="flex justify-center m-5 text-lg font-semibold">Waiting Processes</h2>
+                <div className='w-56'>
+                    <h2 className="flex justify-center m-5 text-lg font-semibold">Waiting Processes ({processes.length})</h2>
                     {processes.length > 0 ? (
                         <ul className="flex flex-col gap-2">
                             {processes.map((process) => (
@@ -126,10 +127,13 @@ const BakeryAlgorithm: React.FC = () => {
                             ))}
                         </ul>
                     ) : (
-                        <p>No waiting processes</p>
+                        <div>
+                            <p className='flex justify-center'>No finished processes</p>
+                            <Image src="./public/empty-box.svg" preview={false}></Image>
+                        </div>
                     )}
                 </div>
-                <div>
+                <div className='w-72'>
                     <h2 className="flex justify-center m-5 text-lg font-semibold">Serving ({serving.length}/{maxServing})</h2>
                     {serving.length > 0 ? (
                         <ul className="flex flex-col gap-2">
@@ -143,11 +147,14 @@ const BakeryAlgorithm: React.FC = () => {
                             ))}
                         </ul>
                     ) : (
-                        <p>No process in queue</p>
+                        <div>
+                            <p className='flex justify-center'>No finished processes</p>
+                            <Image src="./public/empty-box.svg" preview={false}></Image>
+                        </div>
                     )}
                 </div>
-                <div>
-                    <h2 className="flex justify-center m-5 text-lg font-semibold">Finished Processes</h2>
+                <div className='w-56'>
+                    <h2 className="flex justify-center m-5 text-lg font-semibold">Finished Processes ({finishedProcesses.length})</h2>
                     {finishedProcesses.length > 0 ? (
                         <ul className="flex flex-col gap-2">
                             {finishedProcesses.map((process) => (
@@ -159,7 +166,10 @@ const BakeryAlgorithm: React.FC = () => {
                             ))}
                         </ul>
                     ) : (
-                        <p>No finished processes</p>
+                        <div>
+                            <p className='flex justify-center'>No finished processes</p>
+                            <Image src="./public/empty-box.svg" preview={false}></Image>
+                        </div>
                     )}
                 </div>
             </div>
