@@ -1,8 +1,7 @@
 import { ArrowDownOutlined, ArrowUpOutlined, LoadingOutlined, PlusOutlined, ReloadOutlined, StepForwardOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { Button, Image } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { Process } from '../types/process';
-import { Image } from "antd"
 
 const BakeryAlgorithm: React.FC = () => {
     const [processes, setProcesses] = useState<Process[]>([]);
@@ -71,75 +70,60 @@ const BakeryAlgorithm: React.FC = () => {
     return (
         <div className="text-white m-5 flex flex-col gap-4">
             <h1 className="text-5xl font-bold m-2 flex justify-center mt-10 mb-10">Bakery Algorithm</h1>
-            <div className='flex flex-row gap-4 justify-center'>
+            <div className='flex flex-col lg:flex-row gap-4 justify-center mb-4'>
                 <Button
-                    className="w-fit"
-                    ghost
-                    onClick={addProcess}
-                    icon={<PlusOutlined />}
+                    className="w-fit" ghost onClick={addProcess} size="large" icon={<PlusOutlined />}
                 >
                     Add Process
                 </Button>
                 <Button
-                    className="w-fit"
-                    ghost
-                    onClick={serveNextProcess}
-                    icon={<StepForwardOutlined />}
+                    className="w-fit" ghost onClick={serveNextProcess} size="large" icon={<StepForwardOutlined />}
                 >
                     Serve Next Processes
                 </Button>
                 <Button
-                    className="w-fit"
-                    ghost
-                    onClick={serveIncrease}
-                    icon={<ArrowUpOutlined />}
+                    className="w-fit" ghost onClick={serveIncrease} size="large" icon={<ArrowUpOutlined />}
                 >
                     Increase Processes Serving
                 </Button>
                 <Button
-                    className="w-fit"
-                    ghost
-                    onClick={serveDecrease}
-                    icon={<ArrowDownOutlined />}
+                    className="w-fit" ghost onClick={serveDecrease} size="large" icon={<ArrowDownOutlined />}
                 >
                     Decrease Processes Serving
                 </Button>
                 <Button
-                    className="w-fit"
-                    ghost
-                    onClick={resetAll}
-                    icon={<ReloadOutlined />}
+                    className="w-fit" ghost onClick={resetAll} size="large" icon={<ReloadOutlined />}
                 >
                     Reset
                 </Button>
             </div>
-            <div className='flex flex-row justify-around'>
-                <div className='w-56'>
+            <div className='flex flex-col md:flex-row justify-around'>
+                <div className='w-full md:w-1/3 p-2'>
                     <h2 className="flex justify-center m-5 text-lg font-semibold">Waiting Processes ({processes.length})</h2>
                     {processes.length > 0 ? (
                         <ul className="flex flex-col gap-2">
                             {processes.map((process) => (
-                                <li key={process.id}>
-                                    <Button ghost>
+                                <li className='flex justify-center' key={process.id}>
+                                    <Button ghost size="large">
                                         Process {process.id}: Queue Number [{process.queueNumber.join(', ')}]
                                     </Button>
                                 </li>
                             ))}
                         </ul>
                     ) : (
-                        <div>
-                            <p className='flex justify-center'>No finished processes</p>
-                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" preview={false}></Image>
+                        <div className='flex flex-col items-center'>
+                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" width={150} preview={false}></Image>
+                            <p>No waiting processes</p>
                         </div>
                     )}
                 </div>
-                <div className='w-72'>
+                <div className='w-full md:w-1/3 p-2'>
                     <h2 className="flex justify-center m-5 text-lg font-semibold">Serving ({serving.length}/{maxServing})</h2>
                     {serving.length > 0 ? (
                         <ul className="flex flex-col gap-2">
                             {serving.map((process) => (
-                                <li key={process.id}>
-                                    <Button type="primary" ghost>
+                                <li className='flex justify-center' key={process.id}>
+                                    <Button type="primary" ghost size="large">
                                         Serving Process {process.id}: Queue Number [{process.queueNumber.join(', ')}]
                                         <LoadingOutlined />
                                     </Button>
@@ -147,28 +131,28 @@ const BakeryAlgorithm: React.FC = () => {
                             ))}
                         </ul>
                     ) : (
-                        <div>
-                            <p className='flex justify-center'>No finished processes</p>
-                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" preview={false}></Image>
+                        <div className='flex flex-col items-center'>
+                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" width={200} preview={false}></Image>
+                            <p>No serving processes</p>
                         </div>
                     )}
                 </div>
-                <div className='w-56'>
+                <div className='w-full md:w-1/3 p-2'>
                     <h2 className="flex justify-center m-5 text-lg font-semibold">Finished Processes ({finishedProcesses.length})</h2>
                     {finishedProcesses.length > 0 ? (
                         <ul className="flex flex-col gap-2">
                             {finishedProcesses.map((process) => (
-                                <li key={process.id}>
-                                    <Button ghost>
+                                <li className='flex justify-center' key={process.id}>
+                                    <Button ghost size="large">
                                         Process {process.id}: Queue Number [{process.queueNumber.join(', ')}]
                                     </Button>
                                 </li>
                             ))}
                         </ul>
                     ) : (
-                        <div>
-                            <p className='flex justify-center'>No finished processes</p>
-                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" preview={false}></Image>
+                        <div className='flex flex-col items-center'>
+                            <Image src="https://www.svgrepo.com/show/489659/empty-box.svg" width={150} preview={false}></Image>
+                            <p>No finished processes</p>
                         </div>
                     )}
                 </div>
