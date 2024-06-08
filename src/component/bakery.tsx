@@ -23,7 +23,7 @@ const BakeryAlgorithm: React.FC = () => {
     const addProcess = () => {
         const newProcess: Process = {
             id: id,
-            runtime: Math.round((Math.floor(Math.random() * 10) + 1) / 2),
+            runtime: Math.floor(Math.random() * 6) + 1
         };
         setProcesses([...processes, newProcess]);
         setMaxNumber(maxNumber + 1);
