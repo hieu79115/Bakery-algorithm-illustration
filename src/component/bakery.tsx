@@ -64,7 +64,7 @@ const BakeryAlgorithm: React.FC = () => {
         setFinishedProcesses([]);
         setMaxNumber(0);
         setMaxServing(1);
-        setId(0);
+        setId(1);
     };
 
     useEffect(() => {
