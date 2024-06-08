@@ -18,7 +18,11 @@ const BakeryAlgorithm: React.FC = () => {
 
     const [trigger, setTrigger] = useState<number>(0);
 
-    const [id, setId] = useState<number>(0);
+    const [id, setId] = useState<number>(1);
+
+    message.config({
+        maxCount: 3,
+    });
 
     const addProcess = () => {
         const newProcess: Process = {
